@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'dataplatform-core-chatgpt-webapp-d'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CECB7A8E7E564F098C81BC27CC9411A7 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
