@@ -173,7 +173,7 @@ const Chat = () => {
                                     className={styles.chatIcon}
                                     aria-hidden="true"
                                 />
-                                <h1 className={styles.chatEmptyStateTitle}>Start Chat with Edenred GPT 3.5</h1>
+                                <h1 className={styles.chatEmptyStateTitle}>Start Chat GPT with Edenred</h1>
                                 <h2 className={styles.chatEmptyStateSubtitle}>This chatbot is configured to answer your Edenred questions</h2>
                             </Stack>
                         ) : (
