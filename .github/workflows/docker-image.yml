@@ -30,30 +30,30 @@ jobs:
         docker push ehqdataplatformamlcontainerd.azurecr.io/sample-app-aoai-chatgpt:$(date +'%Y-%m-%d')_$GITHUB_RUN_NUMBER;
         docker push ehqdataplatformamlcontainerd.azurecr.io/sample-app-aoai-chatgpt:latest;
   
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   environment:
+  #     name: 'Production'
+  #     url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
       
-    steps:
-      - name: Azure Container Registry Login
-        uses: Azure/docker-login@v1
-        with:
-          # Container registry username
-          username: ${{ secrets.ACR_USERNAME }}
-          # Container registry password
-          password: ${{ secrets.ACR_PASSWORD }}
-          # Container registry server url
-          login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+  #   steps:
+  #     - name: Azure Container Registry Login
+  #       uses: Azure/docker-login@v1
+  #       with:
+  #         # Container registry username
+  #         username: ${{ secrets.ACR_USERNAME }}
+  #         # Container registry password
+  #         password: ${{ secrets.ACR_PASSWORD }}
+  #         # Container registry server url
+  #         login-server: ${{ secrets.ACR_LOGIN_SERVER }}
           
-      - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
-        id: deploy-to-webapp
-        with:
-          app-name: 'dataplatform-core-chatgpt-webapp-d'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-          images: "ehqdataplatformamlcontainerd.azurecr.io/sample-app-aoai-chatgpt:latest"
+  #     - name: 'Deploy to Azure Web App'
+  #       uses: azure/webapps-deploy@v2
+  #       id: deploy-to-webapp
+  #       with:
+  #         app-name: 'dataplatform-core-chatgpt-webapp-d'
+  #         slot-name: 'Production'
+  #         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+  #         images: "ehqdataplatformamlcontainerd.azurecr.io/sample-app-aoai-chatgpt:latest"
         
