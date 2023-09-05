@@ -79,7 +79,7 @@ const Layout = () => {
                             aria-hidden="true"
                         />
                         <Link to="/" className={styles.headerTitleContainer}>
-                            <h1 className={styles.headerTitle}>Chat GPT 3.5 - deployed internally at Edenred</h1>
+                            <h1 className={styles.headerTitle}>Chat GPT 3.5</h1>
                         </Link>
                     </Stack>
                     <Stack horizontal tokens={{ childrenGap: 4 }}>
