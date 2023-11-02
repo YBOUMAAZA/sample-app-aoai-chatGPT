@@ -85,7 +85,7 @@ const Chat = () => {
             setErrorMsg(null)
         }, 500);
     }
-    
+
     const getUserInfoList = async () => {
         const userInfoList = await getUserInfo();
         if (userInfoList.length === 0 && window.location.hostname !== "127.0.0.1") {
@@ -132,7 +132,7 @@ const Chat = () => {
 
         appStateContext?.dispatch({ type: 'UPDATE_CURRENT_CHAT', payload: conversation });
         setMessages(conversation.messages)
-        
+
         const request: ConversationRequest = {
             messages: [...conversation.messages.filter((answer) => answer.role !== "error")]
             // messages: [...conversation.messages.filter((answer) => answer.role === "error")]
@@ -171,7 +171,7 @@ const Chat = () => {
                 appStateContext?.dispatch({ type: 'UPDATE_CURRENT_CHAT', payload: conversation });
                 setMessages([...messages, ...result.choices[0].messages]);
             }
-            
+
         } catch ( e )  {
             if (!abortController.signal.aborted) {
                 let errorMessage = "An error occurred. Please try again. If the problem persists, please contact the site administrator.";
@@ -331,7 +331,7 @@ const Chat = () => {
                 appStateContext?.dispatch({ type: 'UPDATE_CURRENT_CHAT', payload: resultConversation });
                 setMessages([...messages, ...result.choices[0].messages]);
             }
-            
+
         } catch ( e )  {
             if (!abortController.signal.aborted) {
                 let errorMessage = "An error occurred. Please try again. If the problem persists, please contact the site administrator.";
@@ -439,7 +439,7 @@ const Chat = () => {
             setMessages([])
         }
     }, [appStateContext?.state.currentChat]);
-    
+
     useLayoutEffect(() => {
         const saveToDB = async (messages: ChatMessage[], id: string) => {
             const response = await historyUpdate(messages, id)
@@ -450,7 +450,7 @@ const Chat = () => {
                 if(appStateContext.state.isCosmosDBAvailable.cosmosDB){
                     if(!appStateContext?.state.currentChat?.messages){
                         console.error("Failure fetching current chat state.")
-                        return 
+                        return
                     }
                     saveToDB(appStateContext.state.currentChat.messages, appStateContext.state.currentChat.id)
                     .then((res) => {
@@ -527,9 +527,9 @@ const Chat = () => {
                     <ShieldLockRegular className={styles.chatIcon} style={{color: 'darkorange', height: "200px", width: "200px"}}/>
                     <h1 className={styles.chatEmptyStateTitle}>Authentication Not Configured</h1>
                     <h2 className={styles.chatEmptyStateSubtitle}>
-                        This app does not have authentication configured. Please add an identity provider by finding your app in the 
+                        This app does not have authentication configured. Please add an identity provider by finding your app in the
                         <a href="https://portal.azure.com/" target="_blank"> Azure Portal </a>
-                        and following 
+                        and following
                          <a href="https://learn.microsoft.com/en-us/azure/app-service/scenario-secure-app-authentication-app-service#3-configure-authentication-and-authorization" target="_blank"> these instructions</a>.
                     </h2>
                     <h2 className={styles.chatEmptyStateSubtitle} style={{fontSize: "20px"}}><strong>Authentication configuration takes a few minutes to apply. </strong></h2>
@@ -545,8 +545,8 @@ const Chat = () => {
                                     className={styles.chatIcon}
                                     aria-hidden="true"
                                 />
-                                <h1 className={styles.chatEmptyStateTitle}>Start Chat GPT with Edenred</h1>
-                                <h2 className={styles.chatEmptyStateSubtitle}>This chatbot is configured to answer your Edenred questions</h2>
+                                <h1 className={styles.chatEmptyStateTitle}>Start Chat</h1>
+                                <h2 className={styles.chatEmptyStateSubtitle}>This chatbot is configured to answer your questions</h2>
                             </Stack>
                         ) : (
                             <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? "40px" : "0px"}} role="log">
@@ -594,7 +594,7 @@ const Chat = () => {
 
                         <Stack horizontal className={styles.chatInput}>
                             {isLoading && (
-                                <Stack 
+                                <Stack
                                     horizontal
                                     className={styles.stopGeneratingContainer}
                                     role="button"
@@ -610,8 +610,8 @@ const Chat = () => {
                             <Stack>
                                 {appStateContext?.state.isCosmosDBAvailable?.status !== CosmosDBStatus.NotConfigured && <CommandBarButton
                                     role="button"
-                                    styles={{ 
-                                        icon: { 
+                                    styles={{
+                                        icon: {
                                             color: '#FFFFFF',
                                         },
                                         root: {
@@ -630,8 +630,8 @@ const Chat = () => {
                                 />}
                                 <CommandBarButton
                                     role="button"
-                                    styles={{ 
-                                        icon: { 
+                                    styles={{
+                                        icon: {
                                             color: '#FFFFFF',
                                         },
                                         root: {
@@ -672,16 +672,16 @@ const Chat = () => {
                             <IconButton iconProps={{ iconName: 'Cancel'}} aria-label="Close citations panel" onClick={() => setIsCitationPanelOpen(false)}/>
                         </Stack>
                         <h5 className={styles.citationPanelTitle} tabIndex={0}>{activeCitation[2]}</h5>
-                        <div tabIndex={0}> 
-                        <ReactMarkdown 
+                        <div tabIndex={0}>
+                        <ReactMarkdown
                             linkTarget="_blank"
                             className={styles.citationPanelContent}
-                            children={activeCitation[0]} 
-                            remarkPlugins={[remarkGfm]} 
+                            children={activeCitation[0]}
+                            remarkPlugins={[remarkGfm]}
                             rehypePlugins={[rehypeRaw]}
                         />
                         </div>
-                        
+
                     </Stack.Item>
                 )}
                 {(appStateContext?.state.isChatHistoryOpen && appStateContext?.state.isCosmosDBAvailable?.status !== CosmosDBStatus.NotConfigured) && <ChatHistoryPanel/>}
