@@ -576,13 +576,9 @@ const Chat = () => {
                       rel="noopener noreferrer">
                       Learn more
                     </a>
-                  </p>
-                </div>
-                <div className={styles.chatEmptyStateSubtitle}>
-                  <p>Outputs should be reviewed by users accordingly. Knowledge cut-off date is Sept. 2021.</p>
-                </div>
-                <div className={styles.chatEmptyStateSubtitle}>
-                  <p>
+                    <br></br>
+                    Outputs should be reviewed by users accordingly. Knowledge cut-off date is Sept. 2021.
+                    <br></br>
                     Data are not collected by OpenAI and remain on Edenred Cloud Infrastructure temporarily. It might
                     only be used for analytics purpose at an aggregated level.
                   </p>
