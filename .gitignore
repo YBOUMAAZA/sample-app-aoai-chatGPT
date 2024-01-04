@@ -4,6 +4,4 @@ frontend/node_modules
 # static
 .azure/
 __pycache__/
-Untitled-1.json
-.github/workflows/Untitled-2.json
-._*
+.ipynb_checkpoints/
