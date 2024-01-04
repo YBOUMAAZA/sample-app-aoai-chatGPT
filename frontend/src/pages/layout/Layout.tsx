@@ -78,7 +78,7 @@ const Layout = () => {
           <Stack horizontal verticalAlign='center'>
             <img src={Azure} className={styles.headerIcon} aria-hidden='true' />
             <Link to='/' className={styles.headerTitleContainer}>
-              <h1 className={styles.headerTitle}>gpt-4</h1>
+              <h1 className={styles.headerTitle}>GPT-4</h1>
             </Link>
           </Stack>
           <Stack horizontal tokens={{ childrenGap: 4 }}>
