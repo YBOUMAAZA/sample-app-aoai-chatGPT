@@ -3,30 +3,50 @@ name: Build and deploy Docker Image to Azure Web App
 on:
   push:
     branches:
-      - uat
+      - develop # Development branch
+      - uat # User Acceptance Testing branch
+      - main # Production branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set environment variables
+        id: set_env
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/develop" ]; then
+            echo "ACR_USERNAME=${{ secrets.ACR_USERNAME_DEV }}" >> $GITHUB_ENV
+            echo "ACR_PASSWORD=${{ secrets.ACR_PASSWORD_DEV }}" >> $GITHUB_ENV
+          elif [ "${{ github.ref }}" = "refs/heads/uat" ]; then
+            echo "ACR_USERNAME=${{ secrets.ACR_USERNAME_UAT }}" >> $GITHUB_ENV
+            echo "ACR_PASSWORD=${{ secrets.ACR_PASSWORD_UAT }}" >> $GITHUB_ENV
+          elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "ACR_USERNAME=${{ secrets.ACR_USERNAME_PROD }}" >> $GITHUB_ENV
+            echo "ACR_PASSWORD=${{ secrets.ACR_PASSWORD_PROD }}" >> $GITHUB_ENV
+          fi
+
       - name: Azure Container Registry Login
         uses: Azure/docker-login@v1
         with:
           # Container registry username
-          username: ${{ secrets.ACR_USERNAME_A }}
+          username: ${{ env.ACR_USERNAME }}
           # Container registry password
-          password: ${{ secrets.ACR_PASSWORD_A }}
+          password: ${{ env.ACR_PASSWORD }}
           # Container registry server url
-          login-server: ${{ secrets.ACR_LOGIN_SERVER_A }}
+          login-server: ${{ env.ACR_USERNAME }}.azurecr.io
 
       - uses: actions/checkout@v3
-      - name: Build the Docker image
-        run:
-          docker build . --file WebApp.Dockerfile --tag ehqdataplatformamlcontainera.azurecr.io/sample-app-aoai-chatgpt:$(date +'%Y-%m-%d')_$GITHUB_RUN_NUMBER;
-          docker tag ehqdataplatformamlcontainera.azurecr.io/sample-app-aoai-chatgpt:$(date +'%Y-%m-%d')_$GITHUB_RUN_NUMBER ehqdataplatformamlcontainera.azurecr.io/sample-app-aoai-chatgpt:latest;
-          docker push ehqdataplatformamlcontainera.azurecr.io/sample-app-aoai-chatgpt:$(date +'%Y-%m-%d')_$GITHUB_RUN_NUMBER;
-          docker push ehqdataplatformamlcontainera.azurecr.io/sample-app-aoai-chatgpt:latest;
+      - name: Build and push the Docker image
+        run: |
+          IMAGE_NAME=${{ env.ACR_USERNAME }}.azurecr.io/sample-app-aoai-chatgpt
+          DATE_TAG=$(date +'%Y-%m-%d')
+          FULL_TAG=${IMAGE_NAME}:${DATE_TAG}_$GITHUB_RUN_NUMBER
+          LATEST_TAG=${IMAGE_NAME}:latest
+          docker build . --file WebApp.Dockerfile --tag ${FULL_TAG};
+          docker tag ${FULL_TAG} ${IMAGE_NAME}:latest;
+          docker push ${FULL_TAG};
+          docker push ${IMAGE_NAME}:latest;
 
   # deploy:
   #   runs-on: ubuntu-latest
@@ -53,4 +73,4 @@ jobs:
   #         app-name: 'dataplatform-core-chatgpt-webapp-d'
   #         slot-name: 'Production'
   #         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-  #         images: "ehqdataplatformamlcontainera.azurecr.io/sample-app-aoai-chatgpt:latest"
+  #         images: "${IMAGE_NAME}:latest"
