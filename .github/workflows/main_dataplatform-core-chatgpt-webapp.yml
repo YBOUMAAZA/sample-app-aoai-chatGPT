@@ -53,3 +53,11 @@ jobs:
         with:
           name: python-app
           path: .
+
+      # - name: 'Deploy to Azure Web App'
+      #   uses: azure/webapps-deploy@v2
+      #   id: deploy-to-webapp
+      #   with:
+      #     app-name: 'dataplatform-core-chatgpt-webapp-d'
+      #     slot-name: 'Production'
+      #     publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
