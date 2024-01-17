@@ -3,9 +3,9 @@ name: Build and deploy Docker Image to Azure Web App
 on:
   push:
     branches:
-      - develop # Development branch
+      - dev # Development branch
       - uat # User Acceptance Testing branch
-      - main # Production branch
+      - master # Production branch
 
 jobs:
   build:
@@ -15,13 +15,13 @@ jobs:
       - name: Set environment variables
         id: set_env
         run: |
-          if [ "${{ github.ref }}" = "refs/heads/develop" ]; then
+          if [ "${{ github.ref }}" = "refs/heads/dev" ]; then
             echo "ACR_USERNAME=${{ secrets.ACR_USERNAME_DEV }}" >> $GITHUB_ENV
             echo "ACR_PASSWORD=${{ secrets.ACR_PASSWORD_DEV }}" >> $GITHUB_ENV
           elif [ "${{ github.ref }}" = "refs/heads/uat" ]; then
             echo "ACR_USERNAME=${{ secrets.ACR_USERNAME_UAT }}" >> $GITHUB_ENV
             echo "ACR_PASSWORD=${{ secrets.ACR_PASSWORD_UAT }}" >> $GITHUB_ENV
-          elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
+          elif [ "${{ github.ref }}" = "refs/heads/master" ]; then
             echo "ACR_USERNAME=${{ secrets.ACR_USERNAME_PROD }}" >> $GITHUB_ENV
             echo "ACR_PASSWORD=${{ secrets.ACR_PASSWORD_PROD }}" >> $GITHUB_ENV
           fi
@@ -60,11 +60,11 @@ jobs:
   #       uses: Azure/docker-login@v1
   #       with:
   #         # Container registry username
-  #         username: ${{ secrets.ACR_USERNAME }}
+  #         username: ${{ env.ACR_USERNAME }}
   #         # Container registry password
-  #         password: ${{ secrets.ACR_PASSWORD }}
+  #         password: ${{ env.ACR_PASSWORD }}
   #         # Container registry server url
-  #         login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+  #         login-server: ${{ env.ACR_USERNAME }}.azurecr.io
 
   #     - name: 'Deploy to Azure Web App'
   #       uses: azure/webapps-deploy@v2
