@@ -602,19 +602,25 @@ const Chat = () => {
                 {/* <h2 className={styles.chatEmptyStateSubtitle}>This chatbot is configured to answer your questions</h2> */}
                 <div className={styles.chatEmptyStateSubtitle}>
                   <p>
-                    Welcome to EdenChat ! Please be aware that this chatbot is for internal use, powered by Az OpenAI.
-                    <a href='https://learn.microsoft.com/en-us/azure/ai-services/openai/' target='_blank' rel='noopener noreferrer'>
-                      Learn more
-                    </a>
-                    <br></br>
-                    Data are not collected by OpenAI and remain on Edenred Cloud Infrastructure temporarily. By using this service, you agree to our
-                    company's privacy policy and terms of use.
-                    <br></br>
+                    Welcome to EdenChat! Please be aware that this chatbot is for internal use, by using this service you agree to our company's terms
+                    of use.
+                    <br />
                     Outputs should be reviewed by users accordingly. Knowledge cut-off date is Apr. 2023.
-                    <br></br>
-                    <a href='https://forms.office.com/e/TbQBkx7XCz' target='_blank' rel='noopener noreferrer'>
-                      Feedback
-                    </a>
+                    <br />
+                    <br />
+                    <span style={{ fontSize: '0.8em' }}>
+                      When writing a comment in a free text zone, mind to keep your comment adequate, relevant, and limited to what is strictly
+                      necessary within the use of EdenChat.
+                      <br />
+                      For more information, please refer to the
+                      <a
+                        href='https://edenred.sharepoint.com/:b:/s/AI/EXgDA1Wc441Aj1ab9iqmmT4BDOqRE8SSRzXSWuRxoGGl7w?e=bgCmda'
+                        target='_blank'
+                        rel='noopener noreferrer'>
+                        privacy notice
+                      </a>
+                      .
+                    </span>
                   </p>
                 </div>
               </Stack>

@@ -78,8 +78,17 @@ const Layout = () => {
           <Stack horizontal verticalAlign='center'>
             <img src={Azure} className={styles.headerIcon} aria-hidden='true' />
             <Link to='/' className={styles.headerTitleContainer}>
-              <h1 className={styles.headerTitle}>GPT-4</h1>
+              <h1 className={styles.headerTitle}>Powered by GPT-4</h1>
             </Link>
+            <h1 className={styles.headerTitle}>
+              <a href='https://learn.microsoft.com/en-us/azure/ai-services/openai/' target='_blank' rel='noopener noreferrer'>
+                Learn more
+              </a>
+              |
+              <a href='https://forms.office.com/e/TbQBkx7XCz' target='_blank' rel='noopener noreferrer'>
+                Contact Us
+              </a>
+            </h1>
           </Stack>
           <Stack horizontal tokens={{ childrenGap: 4 }}>
             {appStateContext?.state.isCosmosDBAvailable?.status !== CosmosDBStatus.NotConfigured && (
