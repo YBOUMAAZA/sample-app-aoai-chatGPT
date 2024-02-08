@@ -80,7 +80,7 @@ const Layout = () => {
             <Link to='/' className={styles.headerTitleContainer}>
               <h1 className={styles.headerTitle}>Powered by GPT-4</h1>
             </Link>
-            <h1 className={styles.headerTitle}>
+            <h1 className={styles.headerLink}>
               <a href='https://learn.microsoft.com/en-us/azure/ai-services/openai/' target='_blank' rel='noopener noreferrer'>
                 Learn more
               </a>
