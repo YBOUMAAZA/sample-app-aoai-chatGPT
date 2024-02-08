@@ -31,13 +31,16 @@
   color: #242424;
 }
 
-.headerLink {
+.headerText {
+  margin-top: 20px;
   font-style: normal;
-  /* font-weight: 300; */
-  font-size: 0.8em;
-  /* line-height: 14px; */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
   display: flex;
   align-items: flex-end;
+  text-align: center;
+  letter-spacing: -0.01em;
   color: #242424;
 }
 

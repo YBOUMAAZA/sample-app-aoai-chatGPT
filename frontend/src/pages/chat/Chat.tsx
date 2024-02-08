@@ -608,7 +608,7 @@ const Chat = () => {
                     Outputs should be reviewed by users accordingly. Knowledge cut-off date is Apr. 2023.
                     <br />
                     <br />
-                    <span style={{ fontSize: '0.8em' }}>
+                    <span className={styles.chatTitle}>
                       When writing a comment in a free text zone, mind to keep your comment adequate, relevant, and limited to what is strictly
                       necessary within the use of EdenChat.
                       <br />

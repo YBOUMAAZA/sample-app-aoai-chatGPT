@@ -78,17 +78,20 @@ const Layout = () => {
           <Stack horizontal verticalAlign='center'>
             <img src={Azure} className={styles.headerIcon} aria-hidden='true' />
             <Link to='/' className={styles.headerTitleContainer}>
-              <h1 className={styles.headerTitle}>Powered by GPT-4</h1>
+              <p className={styles.headerText}>Powered by GPT-4</p>
             </Link>
-            <h1 className={styles.headerLink}>
-              <a href='https://learn.microsoft.com/en-us/azure/ai-services/openai/' target='_blank' rel='noopener noreferrer'>
-                Learn more
+            <p className={styles.headerText}>
+              <a
+                href='https://edenred.sharepoint.com/sites/AI/SitePages/SITE%20DATA/0.%20EdenChat.aspx?csf=1&web=1&e=ACpSdI'
+                target='_blank'
+                rel='noopener noreferrer'>
+                Learn More
               </a>
               |
               <a href='https://forms.office.com/e/TbQBkx7XCz' target='_blank' rel='noopener noreferrer'>
                 Contact Us
               </a>
-            </h1>
+            </p>
           </Stack>
           <Stack horizontal tokens={{ childrenGap: 4 }}>
             {appStateContext?.state.isCosmosDBAvailable?.status !== CosmosDBStatus.NotConfigured && (
