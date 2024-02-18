@@ -82,15 +82,16 @@ const Layout = () => {
             </Link>
             <p className={styles.headerText}>
               <a
-                href='https://edenred.sharepoint.com/sites/AI/SitePages/SITE%20DATA/0.%20EdenChat.aspx?csf=1&web=1&e=ACpSdI'
+                href='https://edenred.sharepoint.com/:b:/s/AI/ESTxTqh6Go1ApEoxPIa_vY8BWD6OkuPY0ksg3gP_tSD7tA?e=2BvIcq'
                 target='_blank'
                 rel='noopener noreferrer'>
-                Learn More
+                Quick Start
               </a>
-              |
+              ⓘ |
               <a href='https://forms.office.com/e/TbQBkx7XCz' target='_blank' rel='noopener noreferrer'>
-                Contact Us
+                Feedback
               </a>
+              👍
             </p>
           </Stack>
           <Stack horizontal tokens={{ childrenGap: 4 }}>

@@ -598,28 +598,29 @@ const Chat = () => {
             {!messages || messages.length < 1 ? (
               <Stack className={styles.chatEmptyState}>
                 <img src={Azure} className={styles.chatIcon} aria-hidden='true' />
-                <h1 className={styles.chatEmptyStateTitle}>Experiment with ChatGPT</h1>
+                <h1 className={styles.chatEmptyStateTitle}>Welcome to EdenChat!</h1>
                 {/* <h2 className={styles.chatEmptyStateSubtitle}>This chatbot is configured to answer your questions</h2> */}
                 <div className={styles.chatEmptyStateSubtitle}>
                   <p>
-                    Welcome to EdenChat! Please be aware that this chatbot is for internal use, by using this service you agree to our company's terms
-                    of use.
+                    This chatbot is for internal use only, by using this service you agree to our company's terms of use. Outputs should be reviewed
+                    by users accordingly.
                     <br />
-                    Outputs should be reviewed by users accordingly. Knowledge cut-off date is Apr. 2023.
+                    Knowledge cut-off date is Apr. 2023.
                     <br />
                     <br />
                     <span className={styles.chatTitle}>
-                      When writing a comment in a free text zone, mind to keep your comment adequate, relevant, and limited to what is strictly
-                      necessary within the use of EdenChat.
+                      When writing a prompt, mind to stay relevant and limited to what is necessary within the use of EdenChat.
                       <br />
-                      For more information, please refer to the
+                      Help improve EdenChat, we value your feedback !
+                      <br />
+                    </span>
+                    <span>
                       <a
-                        href='https://edenred.sharepoint.com/:b:/s/AI/EXgDA1Wc441Aj1ab9iqmmT4BDOqRE8SSRzXSWuRxoGGl7w?e=bgCmda'
+                        href='https://edenred.sharepoint.com/:b:/s/AI/ESTxTqh6Go1ApEoxPIa_vY8BWD6OkuPY0ksg3gP_tSD7tA?e=2BvIcq'
                         target='_blank'
                         rel='noopener noreferrer'>
-                        privacy notice
+                        Quick Start
                       </a>
-                      .
                     </span>
                   </p>
                 </div>
