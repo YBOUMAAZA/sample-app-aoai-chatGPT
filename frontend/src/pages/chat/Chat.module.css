@@ -65,6 +65,11 @@
   font-style: italic;
 }
 
+.quickStart {
+  font-size: 22px;
+  font-weight: bold;
+}
+
 .chatIcon {
   height: 62px;
   width: 62px;

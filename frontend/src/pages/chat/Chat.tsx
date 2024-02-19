@@ -609,14 +609,14 @@ const Chat = () => {
                     <br />
                     <br />
                     <span className={styles.chatTitle}>
-                      When writing a prompt, mind to stay relevant and limited to what is necessary within the use of EdenChat.
+                      When writing a prompt, mind to stay relevant and limited to what is necessary within the use of EdenChat. Help us improve, your
+                      feedback matters!
                       <br />
-                      Help improve EdenChat, we value your feedback !
                       <br />
                     </span>
-                    <span>
+                    <span className={styles.quickStart}>
                       <a
-                        href='https://edenred.sharepoint.com/:b:/s/AI/ESTxTqh6Go1ApEoxPIa_vY8BWD6OkuPY0ksg3gP_tSD7tA?e=2BvIcq'
+                        href='https://edenred.sharepoint.com/:b:/s/AI/ESTxTqh6Go1ApEoxPIa_vY8BWD6OkuPY0ksg3gP_tSD7tA?e=wbaaCb'
                         target='_blank'
                         rel='noopener noreferrer'>
                         Quick Start
