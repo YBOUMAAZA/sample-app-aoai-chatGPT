@@ -82,12 +82,12 @@ const Layout = () => {
             </Link>
             <p className={styles.headerText}>
               <a
-                href='https://edenred.sharepoint.com/:b:/s/AI/ESTxTqh6Go1ApEoxPIa_vY8BWD6OkuPY0ksg3gP_tSD7tA?e=2BvIcq'
+                href='https://edenred.sharepoint.com/:b:/s/AI/ESTxTqh6Go1ApEoxPIa_vY8BWD6OkuPY0ksg3gP_tSD7tA?e=wbaaCb'
                 target='_blank'
                 rel='noopener noreferrer'>
                 Quick Start
               </a>
-              ⓘ |
+              🚀
               <a href='https://forms.office.com/e/TbQBkx7XCz' target='_blank' rel='noopener noreferrer'>
                 Feedback
               </a>
