@@ -8,11 +8,16 @@ from azure.identity import DefaultAzureCredential
 from base64 import b64encode
 from flask import Flask, Response, request, jsonify, send_from_directory
 from dotenv import load_dotenv
+from azure.monitor.opentelemetry import configure_azure_monitor
+
 
 from backend.auth.auth_utils import get_authenticated_user_details
 from backend.history.cosmosdbservice import CosmosConversationClient
 
 load_dotenv()
+# Configure OpenTelemetry to use Azure Monitor with the 
+# APPLICATIONINSIGHTS_CONNECTION_STRING environment variable.
+configure_azure_monitor()
 
 app = Flask(__name__, static_folder="static")
 
