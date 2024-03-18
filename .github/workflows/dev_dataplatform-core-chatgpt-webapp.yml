@@ -5,11 +5,10 @@
 name: Build and deploy Python app to Azure Web App
 
 on:
-  push:
-    branches:
-      - dev # Development branch
-      - uat # User Acceptance Testing branch
-      - master # Production branch
+  workflow_run:
+    workflows: ['Build and deploy Docker Image to Azure Web App']
+    types:
+      - completed
 
 jobs:
   build:
