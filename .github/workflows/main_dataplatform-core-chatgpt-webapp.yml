@@ -45,7 +45,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      # url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
       - name: Download artifact from build job
@@ -54,10 +54,24 @@ jobs:
           name: python-app
           path: .
 
-      # - name: 'Deploy to Azure Web App'
-      #   uses: azure/webapps-deploy@v2
-      #   id: deploy-to-webapp
-      #   with:
-      #     app-name: 'dataplatform-core-chatgpt-webapp-d'
-      #     slot-name: 'Production'
-      #     publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+      - name: Set environment variables
+        id: set_env
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/dev" ]; then
+            echo "AZUREAPPSERVICE_PUBLISHPROFILE=${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DEV }}" >> $GITHUB_ENV
+            echo "WEB_APP_NAME=${{ secrets.WEB_APP_NAME_DEV }}" >> $GITHUB_ENV
+          elif [ "${{ github.ref }}" = "refs/heads/uat" ]; then
+            echo "AZUREAPPSERVICE_PUBLISHPROFILE=${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_UAT }}" >> $GITHUB_ENV
+            echo "WEB_APP_NAME=${{ secrets.WEB_APP_NAME_UAT }}" >> $GITHUB_ENV
+          elif [ "${{ github.ref }}" = "refs/heads/master" ]; then
+            echo "AZUREAPPSERVICE_PUBLISHPROFILE=${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_PROD }}" >> $GITHUB_ENV
+            echo "WEB_APP_NAME=${{ secrets.WEB_APP_NAME_PROD }}" >> $GITHUB_ENV
+          fi
+
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
+        with:
+          app-name: ${{ env.WEB_APP_NAME }}
+          slot-name: 'Production'
+          publish-profile: ${{ env.AZUREAPPSERVICE_PUBLISHPROFILE }}
