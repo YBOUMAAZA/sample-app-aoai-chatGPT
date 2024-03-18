@@ -17,7 +17,11 @@ from backend.history.cosmosdbservice import CosmosConversationClient
 load_dotenv()
 # Configure OpenTelemetry to use Azure Monitor with the 
 # APPLICATIONINSIGHTS_CONNECTION_STRING environment variable.
-configure_azure_monitor()
+APPLICATIONINSIGHTS_CONNECTION_STRING = os.environ.get("APPLICATIONINSIGHTS_CONNECTION_STRING")
+configure_azure_monitor(
+   connection_string= APPLICATIONINSIGHTS_CONNECTION_STRING,
+   disable_offline_storage=True,
+)
 
 app = Flask(__name__, static_folder="static")
 
