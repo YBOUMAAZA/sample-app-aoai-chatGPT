@@ -87,12 +87,12 @@ const Layout = () => {
                 rel='noopener noreferrer'>
                 Quick Start
               </a>
-              🚀
+              🚀&nbsp;
               <a
                 href='https://edenred.sharepoint.com/sites/AI/Shared Documents/Forms/AllItems.aspx?id=%2Fsites%2FAI%2FShared%20Documents%2FEdenChat%2FPrivacy%5FNotice%5FEdenChat%2Epdf&viewid=0f59080b%2Dbd34%2D4b53%2Db696%2Dbe62f75ed3d0&parent=%2Fsites%2FAI%2FShared%20Documents%2FEdenChat'>
                 Privacy Notice
               </a>
-              🕵️‍♂️
+              🕵️‍♂️&nbsp;
               <a href='https://forms.office.com/e/TbQBkx7XCz' target='_blank' rel='noopener noreferrer'>
                 Feedback
               </a>
